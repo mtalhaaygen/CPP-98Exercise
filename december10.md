@@ -58,3 +58,7 @@ Güvenli kanalın ve veri bütünlüğünün sağlanması için hash algoritmala
 
 Verilerin bütünlüğünden emin olmak için kullanılır
 hash algoritmaları kullanılarak bir özet bilgisi üretilir, bu bilgi veride herhangi bir değişiklik olduğunda değişecektir. Veriyi gönderen taraf bu özet bilgiyi de gönderir ve şifreli metnin şifresi çözüldükten sonra hash algoritması uygulanır ve özet bilginin aynı olması beklenir.
+
+##
+
+##
