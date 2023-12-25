@@ -16,6 +16,17 @@
 ![Alt text](image-4.png)
 ![Alt text](image-5.png)
 
+## C++ dosya türleri 
+`.cc .cpp .c++ .h .hh .hpp .h++ .hxx`
+
+- <bold>.cc :</bold> C++ kaynak kodu dosyasıdır. 
+- <bold>.cpp :</bold> C++ kaynak kodu dosyasıdır. 
+- <bold>.c++ :</bold> C++ kaynak kodu dosyasıdır. 
+`yukarıdaki 3 uzantının arasında hiçbir fark yok. Sadece eskiden daha çok .cc kullanılıyorken şimdilerde .cpp daha sık kullanılıyor`
+<bold>.h :</bold> C veya C++ dilinde başlık (header) dosyasını temsil eder. 
+<bold>.hpp :</bold> .h ile aynı işlevi görür ancak C++ de tercih edilir. En sık tercih edilen bu
+<bold>.hxx :</bold> .h ile aynı işlevi görür ancak C++ de tercih edilir
+<bold>.h++ :</bold> .h ile aynı işlevi görür ancak C++ de tercih edilir
 
 ## Bellek
 
@@ -53,9 +64,9 @@ Eğer bir int değerin 4, 2 hatta 1 bit olmasını sağlayabilirsin bunun için;
 // 1 byte value (on a system where 8 bits is a byte)
 struct SomThing   
 {
-    int   p1:4;   // 4 bit field
-    int   p2:3;   // 3 bit field
-    int   p3:1;   // 1 bit
+		int   p1:4;   // 4 bit field
+		int   p2:3;   // 3 bit field
+		int   p3:1;   // 1 bit
 };
 ```
 Yukarıdaki gibi tanımlanan int değerlere bir boolean tipi ataması yapıldığını düşün :D
@@ -101,22 +112,22 @@ Bu explicit operatörlerinin işlevselliği, temel veri türleriyle ilgili çoğ
 using namespace std;
 
 class CDummy {
-    float i,j;
+		float i,j;
 };
 
 class CAddition {
 	int x,y;
-  public:
+	public:
 	CAddition (int a, int b) { x=a; y=b; }
 	int result() { return x+y;}
 };
 
 int main () {
-  CDummy d;
-  CAddition * padd;
-  padd = (CAddition*) &d;
-  cout << padd->result();
-  return 0;
+	CDummy d;
+	CAddition * padd;
+	padd = (CAddition*) &d;
+	cout << padd->result();
+	return 0;
 }
 ```
 
@@ -169,8 +180,8 @@ Bu sebeplerden ötürü çok sık çağrılan küçük fonksiyonlar inline olara
 ```C
 static inline double maks (double a, double b, double c)
 {
-  double m = (a>b) ? a : b;
-  return (m>c) ? m : c;
+	double m = (a>b) ? a : b;
+	return (m>c) ? m : c;
 }
 ```
 Eğer yukarıdaki fonksiyon için derleyiciye verdiğimiz inline önerisi, derleyici tarafından dikkate alınırsa, başka bir fonksiyon içinde yapılan
@@ -182,16 +193,53 @@ x = maks(sin(x1), cos(x2), tan(x3));
 
 ```C
 {
-  double a=sin(x1), b=cos(x2), c=tan(x3);
-  double m = (a>b) ? a : b;
-  x = (m>c) ? m : c;
+	double a=sin(x1), b=cos(x2), c=tan(x3);
+	double m = (a>b) ? a : b;
+	x = (m>c) ? m : c;
 }
 ```
 kodu yazılmış gibi derlenecektir.
 
 `inline` anahtar sözcüğü, daha önce gördüğümüz `register` anahtar sözcüğü gibi, derleyiciye bir öneri verir. Derleyicinin böyle bir fonksiyonu gerçekten satıriçi yapıp yapmayacağı birçok etkene bağlıdır. Ayrıca, tıpkı `register` gibi kullanımı çoğu zaman gereksizdir; eniyileme yapan iyi bir derleyici normal bir fonksiyonu bile (kullanılan eniyileme seçeneklerine bağlı olarak) bazı kullanımlarda satıriçi bir fonksiyon olarak derleyebilir. İçinde döngü içeren veya özçağrılı fonksiyonların satıriçi yapılması anlamsızdır. Aynı şekilde, farklı dosyalar tarafından kullanılabilecek bir satıriçi fonksiyon tanımının içinde `static` bir değişken tanımlayıp kullanmak veya fonksiyon dışında tanımlanmış bir `static` değişkeni güncellemek, her dosya için diğerinden farklı değişken söz konusu olacağı için kafa karıştırıcı olabilir.
 
+## Paradigmalar hakkında 
+Farklı programlama paradigmaları var ve C++ diğer bir çok programlama dili gibi multparadigmalı bir dil
+C++ prosedürel, fonksiyonel, oop, ve generic bir programlama dili iken
+C yalnızca prosedürel ve structured bir programlama dilidir
 
 # OOP
 
 ![Alt text](image-10.png)
+
+<bold>Sınıflar</bold> consfdfg deconstroocolara çeşitli değişkenlere yada methodlara sahip olabilir.
+
+```cpp
+
+class MerhabaDunya {
+private:
+		std::string mesaj;
+public:
+		int selam_count;
+
+		MerhabaDunya()
+		{
+				mesaj = "Merhaba, Dünya!";
+		}
+		~MerhabaDunya();
+		void MesajiYaz()
+		{
+				std::cout << mesaj << std::endl;
+		}
+
+};
+
+```
+
+<bold>Erişim belirteçleri ;</bold>
+
+![Alt text](image-11.png)
+
+
+
+##### `NOT : class ların fonksiyonlarına method deniyor`
+
