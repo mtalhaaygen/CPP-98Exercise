@@ -1,43 +1,43 @@
 # Engin bilgiler
 
-![Alt text](image.png)
+![Alt text](test/image.png)
 
 ## C Programlama
 
-![Alt text](image-1.png)
+![Alt text](test/image-1.png)
 
 ## C++ Programlama
 
-![Alt text](image-2.png)
+![Alt text](test/image-2.png)
 
 ## C => C++
 
-![Alt text](image-3.png)
-![Alt text](image-4.png)
-![Alt text](image-5.png)
+![Alt text](test/image-3.png)
+![Alt text](test/image-4.png)
+![Alt text](test/image-5.png)
 
 ## C++ dosya türleri 
 `.cc .cpp .c++ .h .hh .hpp .h++ .hxx`
 
-- <bold>.cc :</bold> C++ kaynak kodu dosyasıdır. 
-- <bold>.cpp :</bold> C++ kaynak kodu dosyasıdır. 
-- <bold>.c++ :</bold> C++ kaynak kodu dosyasıdır. 
+- **.cc :** C++ kaynak kodu dosyasıdır. 
+- **.cpp :** C++ kaynak kodu dosyasıdır. 
+- **.c++ :** C++ kaynak kodu dosyasıdır. 
 `yukarıdaki 3 uzantının arasında hiçbir fark yok. Sadece eskiden daha çok .cc kullanılıyorken şimdilerde .cpp daha sık kullanılıyor`
-<bold>.h :</bold> C veya C++ dilinde başlık (header) dosyasını temsil eder. 
-<bold>.hpp :</bold> .h ile aynı işlevi görür ancak C++ de tercih edilir. En sık tercih edilen bu
-<bold>.hxx :</bold> .h ile aynı işlevi görür ancak C++ de tercih edilir
-<bold>.h++ :</bold> .h ile aynı işlevi görür ancak C++ de tercih edilir
+**.h :** C veya C++ dilinde başlık (header) dosyasını temsil eder. 
+**.hpp :** .h ile aynı işlevi görür ancak C++ de tercih edilir. En sık tercih edilen bu
+**.hxx :** .h ile aynı işlevi görür ancak C++ de tercih edilir
+**.h++ :** .h ile aynı işlevi görür ancak C++ de tercih edilir
 
 ## Bellek
 
 RAM'ler 8bitlik hücrelerden oluşuyormuş
 32 bitlik veri için 4 farklı hücrenin yeri tutuluyor
-![Alt text](image-6.png)
+![Alt text](test/image-6.png)
 
 ## Tamsayı Taşması
 
 standart bir shell programında hata kodları 0-255 aralığında değerlere sahip, minishell yazarken hata kodunu int olarak tanımlamak yerine short olarak tanımlasaydık 256ya göre modunu almakla uğraşmazdık
-![Alt text](image-7.png)
+![Alt text](test/image-7.png)
 
 ## PC karakterin kaç bit olduğunu anlıyor
 
@@ -45,7 +45,7 @@ En baştaki bitler o karakterin kaç bayt oldugunu belirliyor
 eğer 0 ise bu ascii tablosundan bir karakterdir ve 0-127 arasında değer alır
 en baştan kaç biti 1 ise karakter o kadar bayta sahiptir
 ve çok baytlı karakterlerde her baytın başındaki iki bit o baytın aynı karaktere ait oldugunu ifade ediyor
-![Alt text](image-8.png)
+![Alt text](test/image-8.png)
 
 ## Bool (boolean) veri türü kaç bit ? 
 
@@ -168,7 +168,7 @@ int ust_al(double a, double b = 1)
 
 ## parametreye fonksiyon vermek
 
-![Alt text](image-9.png)
+![Alt text](test/image-9.png)
 
 ## inline function (C ve C++'da kullanılabilir)
 
@@ -207,11 +207,15 @@ Farklı programlama paradigmaları var ve C++ diğer bir çok programlama dili g
 C++ prosedürel, fonksiyonel, oop, ve generic bir programlama dili iken
 C yalnızca prosedürel ve structured bir programlama dilidir
 
+## fstream
+Acaba bir işaretçinini string *yaz içine ne kadar yazılabilir, kesinlikle bunun bir sınırı vardır ve aşağıdaki kod bellek yönetimi konusunda kontrolsüz
+![Alt text](test/image-16.png)
+
 # OOP
 
-![Alt text](image-10.png)
+![Alt text](test/image-10.png)
 
-<bold>Sınıflar</bold> consfdfg deconstroocolara çeşitli değişkenlere yada methodlara sahip olabilir.
+**Sınıflar** constructor, destructorlara çeşitli değişkenlere yada methodlara sahip olabilir.
 
 ```cpp
 
@@ -234,12 +238,117 @@ public:
 };
 
 ```
-
-<bold>Erişim belirteçleri ;</bold>
-
-![Alt text](image-11.png)
-
-
-
 ##### `NOT : class ların fonksiyonlarına method deniyor`
 
+##### `NOT : bir sınıfı oluşturduysan fakat o sınıfı hiçbiryerde kullanmadıysan methodlar text-segmentinde oluşturulmuyor :D bu neydi şimdi`
+
+##### `namescape : bunun kullanımındaki amaç aynı isme sahip olan ifadelerin birbirleri ile karışmamasıdır. Kendimizde namespace oluşturabiliriz` 
+
+![Alt text](test/image-15.png)
+
+```cpp
+
+using namespace std;
+
+namespace talha {
+    int power = 9999;
+
+    void selam() {
+        cout << "ESSALAMU SELAMUN ALEYKÜM VE RAHMETULLAH" << endl;
+    }
+}
+
+int main()
+{
+	cout << talha::power << endl;
+	talha::selam();
+}
+```
+
+
+<strong>VIRTUAL : </strong> Bir sınıfın üyesi olan bir fonksiyonun, türetilmiş sınıflar tarafından yeniden tanımlanabileceğini ve bu yeniden tanımlama işleminin dinamik olarak yönlendirilebileceğini belirtir.
+
+
+
+**Erişim belirteçleri ;**
+
+![Alt text](test/image-11.png)
+
+**Constructor&Destructor / Kurucu&Yıkıcı Fonksiyonlar**
+
+nesne oluşturulunca constructor, parantez kapsamı bitince destructor çalışacak
+![Alt text](test/image-12.png)
+
+Destructor'a herhangi bir parametre verilemiyor
+
+**Inheritance / Kalıtım**
+
+
+Kalıtım ve ram ilişkisi;
+
+![Alt text](test/image-13.png)
+
+
+Sınıflar başlarken 
+önce base class'ın Constructor'ı çalışır,
+biterken ise
+önce alt classların Destructor'ı çalışır en son base classın Destructor'ı çalışır
+
+**Sınıflar arası tür dönüşümü**
+
+sınıflar arası cast yapılırken kalıtım ilişkisi olan sınıflar üzerinden yapılmalıdır. Aksi halde beklenmeyen sonuçlar alınır
+
+`downcasting` yapılırken dikkatli olunmalı 
+üst sınıf alt sınıfın özelliklerini içermiyor bu yüzden eğer illa downcast yapılacaksa 
+daha önceden üst sınıf olan obje üst sınıfa downcast ile yeniden dönüştürüldüğünde problem çıkmayacaktır
+![Alt text](test/image-14.png)
+
+`Upcasting örnekleri;`
+```cpp
+// class Animal
+// class Dog: public Animal { ...
+// ...
+// ...
+// ...
+    // ! UPCASTİNG
+	Animal *a1 = new Cat(); // a1 animal sınıfından bir nesneye dönüşüyor artık Cat özelliklerine ulaşamıyoruz
+    // ! UPCASTİNG
+    Cat cat;
+    Animal *a2 = &cat; // a2 animal sınıfından bir nesneye dönüşüyor artık Cat özelliklerine ulaşamıyoruz
+
+
+	// Aynı şekilde Dog sınıfı içinde upcasting örnekleri
+	// DİKKAT hiçbirşekilde type-casting operatörü kullanmadığımıza dikkat et, otomatik şekilde gerçekleştirildiler
+    // ! UPCASTİNG
+	Animal& AnimalRef = dog; // No cast required. (Dogs are animals).
+    // ! UPCASTİNG
+    Animal* AnimalPtr = &dog; // No cast required. (Dogs are animals).
+
+```
+
+`alt sınıflar arasında tür dönüşümü yapılmamalı (örn cat ile dog arasında bir cast); derleyici Warning verir`
+
+
+**Kapsülleme / Encapsulation**
+
+setter/getter metodları ile sınıf içerisindeki değişkenlere daha kontrollü erişim sağlarız. Bunu kapsülleme ile yapacağız
+
+```cpp
+class Rectangle {
+	private:
+		int length;
+		int breadth;
+
+	public:
+		int getArea() {
+			return length * breadth;
+		}
+};
+```
+
+Bu örnekte, length ve breadth veri üyeleri ve bu verileri işleyen getArea fonksiyonu, Rectangle sınıfı içinde kapsüllenmiştir. length ve breadth değişkenlerine doğrudan erişim yok yalnızca bir getArea metodu ile erişim var
+
+Kapsüllemenin iki önemli özelliği vardır:
+
+- <mark>Veri Koruma:</mark> Kapsülleme, bir nesnenin iç durumunu, veri üyelerini private olarak saklayarak korur. Bu veri üyelerine erişim ve değişiklik, sınıfın public metotlarına sınırlıdır, bu da kontrollü ve güvenli veri manipülasyonunu sağlar.
+- <mark>Bilgi Gizleme:</mark> Kapsülleme, bir sınıfın iç uygulama detaylarını dış koddan gizler. Sadece sınıfın public arayüzüne erişilebilir, bu da sınıfın kullanımını basitleştirir ve iç uygulamanın dış kodu etkilemeden değiştirilmesine izin verir.

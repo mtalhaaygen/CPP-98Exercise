@@ -183,4 +183,12 @@ int main()
 	firstObject.starter();
 	firstObject.calculate();
 
+
+	int cout;
+
+	cout = 31;
+	std::cout << cout << std::endl;
+
+
+
 }
