@@ -1,32 +1,114 @@
 #include "Contact.hpp"
-#include <sstream>
 
-
+		// ! prıntable kısmını FT_ISPRINTABLE FONKSİYONUNA AT
+		// ! SETTER GETTER OLUSTUR BUNLAR ILE CREAT_CONTACT YENİDEN DÜZENLENSİN
 void Contact::create_contact()
 {
-	std::stringstream convert;
 	std::string input;
+	bool isValid;
 
-	std::cout << "NAME :";
-	std::getline(std::cin, input);
+/*
+*KULLANICIDAN NAME DEĞİŞKENİNİ AL
+*/
+	do {
+		isValid = true;
+		std::cout << "NAME :";
+		std::getline(std::cin, input);
+
+		// DÖNGÜ İÇERİSİNDE INPUT İÇERİĞİNİ KONTROL ET 
+		for (std::string::size_type i = 0; i < input.size(); ++i) {
+			char c = input[i];
+			if (c < 0x20 || c > 0x7E) {
+				std::cout << "Invalid character .." << c << std::endl;
+				std::cin.clear();
+				isValid = false;
+				break;
+			}
+		}
+	} while (!isValid);
 	this->name = input;
+/*
+*KULLANICIDAN SURNAME DEĞİŞKENİNİ AL
+*/
+	do {
+		isValid = true;
+		std::cout << "SURNAME :";
+		std::getline(std::cin, input);
 
-	std::cout << "SURNAME :";
-	std::getline(std::cin, input);
+		// DÖNGÜ İÇERİSİNDE INPUT İÇERİĞİNİ KONTROL ET
+		for (std::string::size_type i = 0; i < input.size(); ++i) {
+			char c = input[i];
+			if (c < 0x20 || c > 0x7E) {
+				std::cout << "Invalid character .." << c << std::endl;
+				std::cin.clear();
+				isValid = false;
+				break;
+			}
+		}
+	} while (!isValid);
 	this->surname = input;
 
-	std::cout << "NİCKNAME :";
-	std::getline(std::cin, input);
+/*
+*KULLANICIDAN NICKNAME DEĞİŞKENİNİ AL
+*/
+	do {
+		isValid = true;
+		std::cout << "NICKNAME :";
+		std::getline(std::cin, input);
+
+		// DÖNGÜ İÇERİSİNDE INPUT İÇERİĞİNİ KONTROL ET
+		for (std::string::size_type i = 0; i < input.size(); ++i) {
+			char c = input[i];
+			if (c < 0x20 || c > 0x7E) {
+				std::cout << "Invalid character .." << c << std::endl;
+				std::cin.clear();
+				isValid = false;
+				break;
+			}
+		}
+	} while (!isValid);
 	this->nickname = input;
 
-	std::cout << "PHONE NUMBER :";
-	std::getline(std::cin, input);
-	convert << input;
-	convert >> this->phone_number;
+/*
+*KULLANICIDAN PHONE NUMBER DEĞİŞKENİNİ AL
+*/
+	while (1)
+	{
+		std::stringstream convert;
+		std::cout << "PHONE NUMBER :";
+		std::getline(std::cin, input);
+		convert << input;
+		if (!(convert >> this->phone_number))
+		{
+			std::cout << "Invalid phone number" << std::endl;
+			std::cin.clear(); // Hata bayraklarını temizle
+			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Tamponu temizle
+		}
+		else
+			break;
+	}
 
-	std::cout << "DUSKIEST SECRET :";
-	std::getline(std::cin, input);
+/*
+*KULLANICIDAN NICKNAME DEĞİŞKENİNİ AL
+*/
+	do {
+		isValid = true;
+		std::cout << "DUSKIEST SECRET :";
+		std::getline(std::cin, input);
+
+		// DÖNGÜ İÇERİSİNDE INPUT İÇERİĞİNİ KONTROL ET
+		for (std::string::size_type i = 0; i < input.size(); ++i) {
+			char c = input[i];
+			if (c < 0x20 || c > 0x7E) {
+				std::cout << "Invalid character .." << c << std::endl;
+				std::cin.clear();
+				isValid = false;
+				break;
+			}
+		}
+	} while (!isValid);
 	this->duskiest_secret = input;
+
 	std::cout << std::endl;
 }
 

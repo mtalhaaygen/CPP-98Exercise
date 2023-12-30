@@ -2,6 +2,7 @@
 # define PHONEBOOK_HPP
 
 #include "Contact.hpp"
+#include <limits>
 #include <iomanip>      // std::setw
 
 class PhoneBook
