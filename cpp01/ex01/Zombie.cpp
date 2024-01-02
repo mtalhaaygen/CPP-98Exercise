@@ -15,9 +15,13 @@ void Zombie::setName(std::string newname)
 	name = newname;
 }
 
+Zombie::Zombie(std::string newname)
+{
+	name = newname;
+}
+
 Zombie::Zombie()
 {
-
 }
 Zombie::~Zombie()
 {
