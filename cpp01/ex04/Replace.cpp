@@ -1,30 +1,37 @@
 #include "Replace.hpp"
 
-void replaceStringInFile(const std::string& filename, const std::string& s1, const std::string& s2) {
-	std::ifstream fileIn(filename);
+// not replace :D goodluck
 
-	if (!fileIn.is_open()) {
-		std::cerr << "Dosya açılamadı!" << std::endl;
-		return;
-	}
-
-	std::ofstream fileOut(filename + ".replace");
-
-	if (!fileOut.is_open()) {
-		std::cerr << "Dosya açılamadı!" << std::endl;
-		return;
-	}
-
+int replaceStringInFile(const std::string& filename, std::string& s1, std::string& s2)
+{
+	std::string newfilename;
+	std::ifstream inFile;
+	std::ofstream outFile;
 	std::string line;
-	while (getline(fileIn, line)) {
-		size_t pos = 0;
-		while ((pos = line.find(s1, pos)) != std::string::npos) {
-			line.replace(pos, s1.length(), s2);
-			pos += s2.length();
-		}
-		fileOut << line << '\n';
+	
+	newfilename = filename + ".replace";
+	outFile.open(newfilename.c_str());
+	inFile.open(filename.c_str());
+
+	if (!inFile.is_open() || !outFile.is_open()) {
+		std::cerr << "File could not be opened!" << std::endl;
+		return (1);
 	}
 
-	fileIn.close();
-	fileOut.close();
+	while (getline(inFile, line))
+	{
+		int found = -1;
+		do
+		{
+			found = line.find(s1, found + 1);
+			if (found != -1)
+				line = line.substr(0, found) + s2 + line.substr(found + s2.length());
+		} while (found != -1);
+		
+		outFile << line << '\n';
+	}
+
+	inFile.close();
+	outFile.close();
+	return (0);
 }

@@ -5,6 +5,6 @@
 #include <fstream>
 #include <string>
 
-void replaceStringInFile(const std::string& filename, const std::string& s1, const std::string& s2);
+int replaceStringInFile(const std::string& filename, std::string& s1, std::string& s2);
 
 #endif

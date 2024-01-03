@@ -218,13 +218,11 @@ C++'da `std::string` sınıfı, stringlerle çalışmayı kolaylaştıran bir di
 
 6. **`replace()`**¹: Bu fonksiyon, bir stringin belirli bir kısmını başka bir string ile değiştirir¹.
 
-7. **`substr()`**¹: Bu fonksiyon, bir stringin belirli bir alt stringini alır¹.
+7. **`find()` ve `rfind()`**¹: Bu fonksiyonlar, bir string içinde başka bir stringin ilk (`find()`) veya son (`rfind()`) konumunu bulur¹.
 
-8. **`find()` ve `rfind()`**¹: Bu fonksiyonlar, bir string içinde başka bir stringin ilk (`find()`) veya son (`rfind()`) konumunu bulur¹.
+8. **`compare()`**¹: Bu fonksiyon, iki stringi karşılaştırır¹.
 
-9. **`compare()`**¹: Bu fonksiyon, iki stringi karşılaştırır¹.
-
-10. **`c_str()`**¹: Bu fonksiyon, bir stringin C-string (null ile sonlandırılmış karakter dizisi) karşılığını döndürür¹.
+9. **`c_str()`**¹: Bu fonksiyon, bir stringin C-string (null ile sonlandırılmış karakter dizisi) karşılığını döndürür¹.
 
 Bu fonksiyonlar, bir `std::string` nesnesi üzerinde çeşitli işlemler gerçekleştirmenizi sağlar. Her zaman hangi fonksiyonun en uygun olduğunu belirlemek için gereksinimlerinizi ve kısıtlamalarınızı göz önünde bulundurun.
 
@@ -296,6 +294,9 @@ Source: Conversation with Bing, 1/2/2024
 
 Acaba bir işaretçinini string *yaz içine ne kadar yazılabilir, kesinlikle bunun bir sınırı vardır ve aşağıdaki kod bellek yönetimi konusunda kontrolsüz
 ![Alt text](test/image-16.png)
+
+## Floating Point Numbers
+
 
 # OOP
 
