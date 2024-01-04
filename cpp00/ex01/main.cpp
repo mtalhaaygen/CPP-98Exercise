@@ -10,7 +10,7 @@ int main()
 	{
 		std::cout << "=> ( ADD | SEARCH | EXIT ) <=" << std::endl;
 		std::cout << "Please enter a valid command : ";
-		std::getline(std::cin, input); // Bunun bir parametresi daha var, varsayılanı '\n', enter girilene kadarki inputu alıyor
+		std::getline(std::cin, input);
 		std::cout << std::endl;
 
 		if (input.compare("ADD") == 0)
@@ -26,19 +26,19 @@ int main()
 			{
 				std::cout << std::endl << "Please enter the index of the contact : ";
 				std::cin >> i;
-				if (std::cin.fail()) // Eğer giriş başarısızsa
+				if (std::cin.fail())
 					std::cout << "Invalid input. Please enter a number." << std::endl;
 				else if (phonebook.people_count < i || i < 1)
 					std::cout << "Invalid index";
 				else
 				{
 					phonebook.display_detail(i);
-					std::cin.clear(); // Hata bayraklarını temizle
-					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Tamponu temizle
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 					break ;
 				}
-				std::cin.clear(); // Hata bayraklarını temizle
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Tamponu temizle
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			}
 		}
 		else if (input.compare("EXIT") == 0)
