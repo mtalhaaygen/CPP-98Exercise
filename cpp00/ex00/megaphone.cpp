@@ -2,10 +2,6 @@
 #include <string>
 #include <cctype> // toupper()
 
-namespace x_talha {
-	static int a = 1907;
-}
-
 int main(int argc, char**argv)
 {
 	if (argc == 1)

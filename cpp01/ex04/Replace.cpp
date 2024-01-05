@@ -25,7 +25,7 @@ int replaceStringInFile(const std::string& filename, std::string& s1, std::strin
 		{
 			found = line.find(s1, found + 1);
 			if (found != -1)
-				line = line.substr(0, found) + s2 + line.substr(found + s2.length());
+				line = line.substr(0, found) + s2 + line.substr(found + s1.length());
 		} while (found != -1);
 		
 		outFile << line << '\n';
