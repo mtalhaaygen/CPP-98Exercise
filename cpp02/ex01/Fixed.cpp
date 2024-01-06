@@ -32,7 +32,7 @@ Fixed::~Fixed()
 Fixed &Fixed::operator = (const Fixed &a)
 {
 	std::cout << "Copy assigment operator calledd" << std::endl;
-	if(this != &a)	
+	if (this != &a)
 			_fixedpoint = a.getRawBits();
 	return *this;
 }
