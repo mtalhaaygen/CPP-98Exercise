@@ -1,11 +1,15 @@
-#include <iostream>
+#include "Fixed.hpp"
 
-float answer;
-int main()
-{
-	answer = 1.0 / 3;
-	// std::cout << "The answer is " << (double)(1.0 / 3.0) << "\n";
-	// std::cout << "The answer is " << (double)(1.0 / 6.0) << "\n";
-	std::cout << answer << "\n";
-	return (0);
+int main( void ) {
+	Fixed a;
+	Fixed b( a );
+	Fixed c;
+
+	c = b;
+
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+
+	return 0;
 }
