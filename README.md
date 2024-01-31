@@ -615,7 +615,57 @@ Aşağıdaki kullanımda get metodundan return edlien değerin yalnızca const b
 ![Alt text](test/image-24.png)
 
 ![Alt text](test/image-25.png)
+
 ## Pure specifier
+
 ![Alt text](image.png)
+
+## Shallow copy VS Deep copy
+
+C++'da **shallow copy** ve **deep copy** arasındaki temel farklar aşağıdaki gibidir:
+
+**Shallow Copy**:
+- Shallow copy, bir nesnenin tüm değişkenlerinin verilerini basitçe kopyalayarak yeni bir nesne oluşturur.
+- Eğer nesnenin bazı değişkenleri heap bölümünde tanımlanmışsa, kopyalanan nesne değişkeni de aynı bellek konumuna referans verecektir.
+- Bu durum, her iki nesnenin de aynı bellek konumuna referans vermesi nedeniyle belirsizlik ve çalışma zamanı hatalarına yol açabilir.
+- C++ derleyicisi, derleme zamanında shallow copy gerçekleştirmek için otomatik olarak bir kopya oluşturucu ve atama operatörünü aşırı yükler.
+
+**Deep Copy**:
+- Deep copy, bir nesnenin tüm değişkenlerinin verilerini kopyalayarak yeni bir nesne oluşturur ve aynı değere sahip benzer bellek kaynaklarını da nesneye tahsis eder.
+- Deep copy gerçekleştirmek için, kopya oluşturucuyu açıkça tanımlamamız ve gerekirse dinamik belleği de atamamız gerekmektedir.
+- Deep copy, orijinal ve kopyalanan X nesnesinin pi üyesinin farklı int nesnelerine işaret edeceği, ancak her ikisinin de aynı değere sahip olacağı anlamına gelir.
+
+Aşağıda, shallow copy ve deep copy'nin bir örneğini bulabilirsiniz:
+
+```cpp
+// Shallow Copy
+class Animal  { 
+private:  
+    int i;  
+    int *pi; 
+public:  
+    Animal ()  : pi (new int)  { } // Varsayılan yapıcı, 'pi' için heap'te yeni bir int oluşturur.
+    Animal (const Animal& copy) : i (copy.i), pi (copy.pi)  { } // <-- copy constructor // , 'i' ve 'pi' değişkenlerini kopyalar.
+}; 
+
+// Deep Copy
+class Animal  { 
+private:  
+    int i;  
+    int *pi; 
+public:  
+    Animal ()  : pi (new int)  { }
+    Animal (const Animal& copy) : i (copy.i), pi (new int (*copy.pi)) { } // <-- copy constructor // <-- note this line in particular! 
+	// 'i' değişkenini kopyalar ve 'pi' için heap'te yeni bir int oluşturur.
+};
+```
+¹²
+
+Shallow Copy and Deep Copy in C++ - GeeksforGeeks. https://www.geeksforgeeks.org/shallow-copy-and-deep-copy-in-c/.
+c++ - Deep copy vs Shallow Copy - Stack Overflow. https://stackoverflow.com/questions/2657810/deep-copy-vs-shallow-copy.
+Difference between Shallow and Deep copy of a class. https://www.geeksforgeeks.org/difference-between-shallow-and-deep-copy-of-a-class/.
+
+
 https://en.cppreference.com/w/cpp/string/basic_string
 https://www.youtube.com/watch?v=HwtFcT-ueu8&ab_channel=BoQian
+
