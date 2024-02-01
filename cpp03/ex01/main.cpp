@@ -2,14 +2,14 @@
 
 int main()
 {
-	ScavTrap bilal("Bilal");
+	ScavTrap talha("Talha");
 	ScavTrap salih("Salih");
-	ScavTrap nurtas(bilal);
+	ScavTrap maygen(talha);
 
-	bilal.attack("Salih");
+	talha.attack("Salih");
 	salih.takeDamage(20);
 	salih.beRepaired(25);
-	nurtas = salih;
-	nurtas.attack("Bilal");
+	maygen = salih;
+	maygen.attack("Talha");
 	return (0);
 }

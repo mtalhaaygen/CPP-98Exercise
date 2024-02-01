@@ -2,19 +2,19 @@
 
 int main()
 {
-	ClapTrap bilal("Bilal");
-	ClapTrap salih("Salih");
+	ClapTrap talha("Talha");
+	ClapTrap fahriye("Fahriye");
 	ClapTrap emre("Emre");
-	ClapTrap mustafa(salih);
+	ClapTrap mustafa(fahriye);
 
-	emre.attack("Salih");
-	emre = bilal;
-	emre.attack("Salih");
+	emre.attack("fahriye");
+	emre = talha;
+	emre.attack("fahriye");
 
-	bilal.attack("Emre");
+	talha.attack("Emre");
 	mustafa.attack("Oğuzhan");
-	bilal.beRepaired(5);
-	bilal.takeDamage(10);
-	bilal.attack("Anıl");
+	talha.beRepaired(5);
+	talha.takeDamage(10);
+	talha.attack("Anıl");
 	mustafa.takeDamage(10);
 }

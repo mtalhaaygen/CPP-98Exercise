@@ -2,15 +2,15 @@
 
 int main()
 {
-	FragTrap bilal("Bilal");
-	FragTrap salih("Salih");
-	FragTrap nurtas(bilal);
+	FragTrap talha("Talha");
+	FragTrap omar("Omar");
+	FragTrap maygen(talha);
 
-	bilal.attack("Salih");
-	salih.takeDamage(20);
-	salih.beRepaired(25);
-	nurtas = salih;
-	nurtas.attack("Bilal");
-	bilal.highFivesGuys();
+	talha.attack("Omar");
+	omar.takeDamage(20);
+	omar.beRepaired(25);
+	maygen = omar;
+	maygen.attack("Talha");
+	talha.highFivesGuys();
 	return (0);
 }
