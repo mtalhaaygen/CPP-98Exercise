@@ -661,11 +661,78 @@ public:
 ```
 ¹²
 
-Shallow Copy and Deep Copy in C++ - GeeksforGeeks. https://www.geeksforgeeks.org/shallow-copy-and-deep-copy-in-c/.
-c++ - Deep copy vs Shallow Copy - Stack Overflow. https://stackoverflow.com/questions/2657810/deep-copy-vs-shallow-copy.
-Difference between Shallow and Deep copy of a class. https://www.geeksforgeeks.org/difference-between-shallow-and-deep-copy-of-a-class/.
+## static members
 
+C++'da, bir sınıfın statik üyelerine ihtiyaç duyulmasının birkaç nedeni olabilir:
 
+1. **Sınıf seviyesindeki değişkenler:** Statik üyeler, tüm sınıf örneklerinin paylaştığı değişkenleri temsil eder. Yani, bir sınıfın tüm örnekleri aynı statik değişkeni paylaşır. Bu, belirli bir durumu izlemek veya sınıf örnekleri arasında bilgi paylaşmak için kullanılabilir.
+
+2. **Sabit Değerler:** Statik sabitler, bir sınıfın tüm örnekleri tarafından paylaşılan sabit değerler sağlar. Bu genellikle, bir sınıfın tüm örneklerinin kullanması gereken sabit bir değeri temsil etmek için kullanılır.
+
+3. **Sınıf Fonksiyonları:** Statik fonksiyonlar, sınıfın herhangi bir örneği olmadan çağrılabilir. Bu, genellikle bir sınıfın işlevselliğini kullanmanız gerektiğinde, ancak belirli bir sınıf örneğine ihtiyaç duymadığınızda kullanışlıdır.
+
+Aşağıda, bir sınıfın statik üyesinin nasıl kullanıldığını gösteren bir C++ kod örneği bulunmaktadır:
+
+```cpp
+class MyClass {
+public:
+    static int count;  // Statik üye değişkeni
+
+    MyClass() {
+        // Her yeni örnek oluşturulduğunda count artar
+        count++;
+    }
+
+    static int getCount() {  // Statik üye fonksiyonu
+        return count;
+    }
+};
+
+// Statik üye değişkenini başlatma
+int MyClass::count = 0;
+
+int main() {
+    MyClass obj1;
+    MyClass obj2;
+    MyClass obj3;
+
+    std::cout << "Toplam MyClass nesnesi: " << MyClass::getCount();
+
+    return 0;
+}
+```
+
+Bu kodda, `MyClass` sınıfının statik bir üyesi olan `count` değişkeni, `MyClass` sınıfının kaç örneğinin oluşturulduğunu izler. `getCount` statik fonksiyonu, `count` değişkenine erişmek için kullanılır. Bu kod, `MyClass` sınıfının üç örneğini oluşturur ve `getCount` fonksiyonunu kullanarak toplam örnek sayısını yazdırır. Bu, statik üye değişkenlerin ve fonksiyonların nasıl kullanılabileceğine bir örnektir. 
+
+Başka bir örnek;
+
+```c++
+#include <iostream>
+
+struct Something
+{
+    static int value;
+};
+
+int Something::value = 1;
+
+int main()
+{
+    Something first;
+    Something second;
+
+    first.value = 2;
+
+    std::cout << first.value << '\n';
+    std::cout << second.value << '\n';
+
+    return 0;
+}
+```
+
+Yukarıdaki örnekde static değişken bir objede değiştirildiğinde diğeride değişir, bellekte bir yerde tutuluyor ve sınıf içerisinde kesinlikle başlatılamıyor.
+https://www.learncpp.com/cpp-tutorial/static-member-variables/
+https://www.learncpp.com/cpp-tutorial/static-member-functions/
+https://cplusplus.com/files/tutorial.pdf
+https://www.youtube.com/watch?v=HwtFcT-ueu8
 https://en.cppreference.com/w/cpp/string/basic_string
-https://www.youtube.com/watch?v=HwtFcT-ueu8&ab_channel=BoQian
-
