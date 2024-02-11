@@ -580,12 +580,113 @@ Bir sınıfı yada herhangi yapıyı kullanırken arka planda nasıl çalıştı
 Örneğin pow() metodunu kullanırken nasıl bir algoritma ile bu işlemin gerçekleştiğini bilmemize gerek yoktur
 Bir veriyi soyutlamayı sınıfla,r header filelar yada Access Specifiers yardımı ile yapabiliriz
 
-- İçinde virtual keywordu bulunan gövdesiz metodların olduğu sınıf soyut sınıftır. (`virtual void run() = 0` gibi)
-- Soyut sınıflardan nesne üretilemez. Bu sınıflar nesne üretmek için değil diğer sınıfları düzenlemek içindir
-- Soyut sınıftan miras alan sınıflar var olan virtual metodları override etmez ise onlarda soyuttur
+- İçinde virtual keywordu bulunan gövdesiz metodların olduğu sınıf soyut sınıftır. (`virtual void run() = 0` gibi). Sınıf içinde en az bir adet pure virtual function var ise bu sınıf abstract sınıftır
+- Soyut sınıflardan nesne üretilemez. Bu sınıflar nesne üretmek için değil diğer sınıfları düzenlemek içindir. Nesne üretilemesede abstract sınıf tipinde işaretçilere ve referanslara sahip olabiliriz.
+- Soyut sınıftan miras alan sınıflar var olan virtual metodları override etmez ise onlarda soyuttur.
+- C++'ta soyut bir sınıf, struct anahtar sözcüğü kullanılarak da tanımlanabilir.
+```C++
+// Incredible
+struct shapeClass
+{
+    virtual void Draw()=0;
+}
+```
 - Soyut sınıf ile interface arasındaki fark
 	=> eğer sınıf içerisinde değişken barındırmıyorsa interface, değişkenlerde barındırıyorsa sadece soyut sınıftır
 - Soyut sınıf çeşitli değişken ve metod barındırabilir, soyut olması için yalnızca (`virtual void run() = 0` gibi) bir metod yeterlidir
+
+## **Interface**
+
+Interfaceler, bir sınıfın davranışını, sınıfın uygulanmasına bağlı kalmadan tanımlamanın bir yolundan başka bir şey değildir. C++ programlamada yerleşik bir Interface kavramı yoktur. Bir Interface oluşturmak için yalnızca saf sanal (pure virtual) metodlara sahip soyut bir sınıf oluşturmamız gerekir. C++'da Interfacelere saf soyut sınıflar da denir.
+
+- Saf soyut sınıftan (Interface) türetilen herhangi bir sınıf, temel sınıfın, yani Interfacein tüm yöntemlerini uygulamalıdır.
+- Interface pointerları metodlara ve sınıflara aktarılabilir, böylece türetilmiş sınıfın işlevlerini oradan çağırabiliriz.
+
+```c++
+// C++ program to implement 
+// Interface 
+#include <iostream> 
+#include <string> 
+using namespace std; 
+
+// Interface(Abstract class 
+// with pure virtual function) 
+class GFG 
+{ 
+public: 
+	virtual string returnString() = 0; 
+}; 
+
+class child : public GFG 
+{ 
+public: 
+	string returnString() 
+	{ 
+	return "GeeksforGeeks"; 
+	} 
+}; 
+
+// Driver code 
+int main() 
+{ 
+	child childObj; 
+	GFG* ptr; 
+	ptr = &childObj; 
+	cout << ptr->returnString(); 
+	return 0; 
+}
+
+```
+##### **yada**
+```c++
+// C++ program to implement 
+// the Interface 
+#include <iostream> 
+#include <string> 
+using namespace std; 
+
+// Interface(Abstract class 
+// with pure virtual function) 
+class websiteName 
+{ 
+public: 
+	virtual string getName() = 0; 
+}; 
+
+class shortForm : public websiteName 
+{ 
+public: 
+	string getName() 
+	{ 
+	return "GFG"; 
+	} 
+}; 
+
+class fullForm : public websiteName 
+{ 
+public: 
+	string getName() 
+	{ 
+	return "GeeksforGeeks"; 
+	} 
+}; 
+
+// Driver code 
+int main() 
+{ 
+	shortForm obj1; 
+	fullForm obj2; 
+	websiteName* ptr; 
+	ptr = &obj1; 
+	cout << "Short form - " << 
+			ptr->getName(); 
+	ptr = &obj2; 
+	cout << "\nFull form - " << 
+			ptr->getName(); 
+	return 0; 
+}
+
+```
 
 ## Sınıflarda const
 
@@ -661,6 +762,38 @@ public:
 ```
 ¹²
 
+## copy construtor vs copy assigment
+```c++
+#include <iostream>
+class deneme{
+    public:
+        int x;
+        deneme(){x = 42;}
+        deneme(const deneme&obj){this->x = obj.x + 1; std::cout << "copy constructor called\n";}
+        deneme& operator=(const deneme&obj){this->x = obj.x; std::cout << "copy assignment called =>" << this->x << "\n"; return(*this);}
+        ~deneme(){std::cout << "destructor called\n";}
+};
+int main()
+{
+    deneme obj1;
+    deneme obj2 = obj1; // copy constructor called
+    std::cout << obj2.x << std::endl;
+    obj2 = obj1; // obj1 nesnesinin operator= fonksiyonu çalışıyor
+    std::cout << obj2.x << std::endl;
+}
+/* OUTPUT
+
+>> copy constructor called
+>> 43
+>> copy assignment called
+>> 42
+>> destructor called
+>> destructor called
+
+
+*/
+```
+
 ## static members
 
 C++'da, bir sınıfın statik üyelerine ihtiyaç duyulmasının birkaç nedeni olabilir:
@@ -671,6 +804,25 @@ C++'da, bir sınıfın statik üyelerine ihtiyaç duyulmasının birkaç nedeni 
 
 3. **Sınıf Fonksiyonları:** Statik fonksiyonlar, sınıfın herhangi bir örneği olmadan çağrılabilir. Bu, genellikle bir sınıfın işlevselliğini kullanmanız gerektiğinde, ancak belirli bir sınıf örneğine ihtiyaç duymadığınızda kullanışlıdır.
 
+
+```c++
+#include <iostream>
+
+class MyClass {
+public:
+    static void SayHello() {
+        std::cout << "Merhaba, dünya!" << std::endl;
+    }
+};
+
+int main() {
+    // Statik fonksiyonu sınıf adıyla çağırabiliriz
+    MyClass::SayHello();
+    return 0;
+}
+
+```
+
 Aşağıda, bir sınıfın statik üyesinin nasıl kullanıldığını gösteren bir C++ kod örneği bulunmaktadır:
 
 ```cpp
@@ -679,7 +831,7 @@ public:
     static int count;  // Statik üye değişkeni
 
     MyClass() {
-        // Her yeni örnek oluşturulduğunda count artar
+        // Her yeni nesne oluşturulduğunda count artar
         count++;
     }
 
@@ -730,9 +882,9 @@ int main()
 }
 ```
 
-Yukarıdaki örnekde static değişken bir objede değiştirildiğinde diğeride değişir, bellekte bir yerde tutuluyor ve sınıf içerisinde kesinlikle başlatılamıyor.
-https://www.learncpp.com/cpp-tutorial/static-member-variables/
-https://www.learncpp.com/cpp-tutorial/static-member-functions/
+Yukarıdaki örnekde static değişken bir objede değiştirildiğinde diğeride değişir, bellekte tek yerde tutuluyor ve sınıf içerisinde kesinlikle başlatılamıyor.
+
+
 https://cplusplus.com/files/tutorial.pdf
 https://www.youtube.com/watch?v=HwtFcT-ueu8
 https://en.cppreference.com/w/cpp/string/basic_string
