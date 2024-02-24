@@ -434,7 +434,7 @@ class  <derived_class_name> : <access-specifier> <base_class_name>
     - Bu, `ABC` sınıfının dışından bu üyelere erişilemeyeceği, ancak `ABC`'den türetilmiş sınıfların bu üyelere erişebileceği anlamına gelir¹.
 
 4. **Default**: `class ABC: XYZ`¹
-    - Eğer erişim belirteci belirtilmezse (örneğin, `public`, `private` veya `protected`), C++'da varsayılan olarak `private` miras alınır¹.
+    - Eğer erişim belirteci belirtilmezse (örneğin, `public`, `private` veya `protected`), C++'da <mark> varsayılan olarak **private** miras alınır. </mark>
     - Bu, `class ABC: XYZ` ifadesinin `class ABC : private XYZ` ile aynı olduğu anlamına gelir¹.
 
 **`Miras alırken karşılaşılabilecek bir problem ; `**
