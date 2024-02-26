@@ -3,23 +3,35 @@
 
 #include <iostream>
 
-// Geçersiz bir not kullanarak bir Bürokrat'ı örneklendirmeye yönelik herhangi bir girişim bir exception oluşturmalıdır:
-
 class Bureaucrat
 {
-	public:
+	private:
 		const std::string name;
-		unsigned int grade;
+		int grade;
+	public:
 		Bureaucrat ();
-		Bureaucrat (const Bureaucrat &a);
+		Bureaucrat (int grade, std::string name);
 		~Bureaucrat ();
+		Bureaucrat (const Bureaucrat &a);
 		Bureaucrat &operator = (const Bureaucrat &a);
-		const std::string getName();
-		unsigned int getGrade();
-		void incrementGrade(); // gerektiginde exception fırlat
-		void decrementGrade(); // gerektiginde exception fırlat
+		const std::string getName(void)const;
+		int getGrade(void)const;
+		void incrementGrade();
+		void decrementGrade();
+		
+		class GradeTooLowException : public std::runtime_error
+		{
+			public:
+				GradeTooLowException():std::runtime_error("Grade is too low"){};
+		};
+		class GradeTooHighException : public std::exception
+		{
+			virtual const char *what() const throw();
+		};
 };
 
 std::ostream & operator<<(std::ostream &o, Bureaucrat const &obj);
 
 #endif
+
+
