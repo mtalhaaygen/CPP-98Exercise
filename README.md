@@ -789,8 +789,6 @@ int main()
 >> 42
 >> destructor called
 >> destructor called
-
-
 */
 ```
 
