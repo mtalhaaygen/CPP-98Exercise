@@ -1,28 +1,18 @@
 #include "Bureaucrat.hpp"
-#include "stdio.h"
+#include "Form.hpp"
+
 int main()
 {
-    Bureaucrat a;
-    Bureaucrat b(a);
-    Bureaucrat c;
-    c = a;
+	try
+	{
+		Bureaucrat a(22, "buro");
+		std::cout << a << std::endl;
 
-    try
-    {
-        Bureaucrat d(-1, "d");
-    }
-    catch (std::exception &e)
-    {
-    	std::cerr << e.what() << std::endl;
-    }
-    
-    try
-    {
-    	c.decrementGrade();
-    }
-    catch (Bureaucrat::GradeTooLowException &e)
-    {
-    	std::cout << e.what() << std::endl;
-    }
-    return 0;
+		Form form(1, 11, true, "form");
+		a.signForm(form);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

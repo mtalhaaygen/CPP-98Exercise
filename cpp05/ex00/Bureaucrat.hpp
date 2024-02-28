@@ -18,15 +18,13 @@ class Bureaucrat
 		int getGrade(void)const;
 		void incrementGrade();
 		void decrementGrade();
-		
-		class GradeTooLowException : public std::runtime_error
+		class GradeTooLowException : public std::exception
 		{
-			public:
-				GradeTooLowException():std::runtime_error("Grade is too low"){};
+			const char *what() const throw();
 		};
 		class GradeTooHighException : public std::exception
 		{
-			virtual const char *what() const throw();
+			const char *what() const throw();
 		};
 };
 

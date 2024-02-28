@@ -4,7 +4,7 @@ Form::Form() : name("default"), gradeToSign(150), gradeToExecute(150), isSigned(
 {
 	// std::cout << "Form default constructor called" << std::endl;
 }
-Form::Form(int gradeToSign, int gradeToExecute, bool isSigned, std::string name) : name(name), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute), isSigned(isSigned)
+Form::Form(int gradeToExecute, int gradeToSign, bool isSigned, std::string name) : name(name), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute), isSigned(isSigned)
 {
 	// std::cout << "Form constructor called" << std::endl;
 	if (gradeToSign < 1 || gradeToExecute < 1)
@@ -61,7 +61,7 @@ void Form::beSigned(Bureaucrat &a)
 {
 	if (this->isSigned == true)
 		std::cout << "Form is already signed\n";
-	else if(this->getGradeToSign() > a.getGrade())
+	else if(this->getGradeToSign() < a.getGrade())
 		throw GradeTooLowException();
 	else
 	{
