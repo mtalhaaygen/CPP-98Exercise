@@ -2,8 +2,8 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "Form.hpp"
-class Form;
+#include "AForm.hpp"
+class AForm;
 class Bureaucrat
 {
 	private:
@@ -19,8 +19,8 @@ class Bureaucrat
 		int getGrade(void)const;
 		void incrementGrade();
 		void decrementGrade();
-		void signForm(Form &form);
-		void executeForm(Form const &form);
+		void signForm(AForm &Aform);
+		void executeForm(AForm const &Aform);
 		class GradeTooLowException : public std::runtime_error
 		{
 			public:
