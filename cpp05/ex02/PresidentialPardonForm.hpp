@@ -2,28 +2,32 @@
 #define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
+#include "Bureaucrat.hpp"
 #include "AForm.hpp"
+
+// classes
+class Bureaucrat;
+class From;
 
 class PresidentialPardonForm : public AForm
 {
 	private:
 		std::string target;
 	public:
-		PresidentialPardonForm();
-		~PresidentialPardonForm();
+	// constructors
+		PresidentialPardonForm(void);
 		PresidentialPardonForm(std::string target);
-		PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
 		PresidentialPardonForm(const PresidentialPardonForm& other);
-
+	// destructor
+		~PresidentialPardonForm();
+	// operator overloads
+		PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
+	// execute
 		void execute(Bureaucrat const & executor) const;
-		class GradeTooHighException : public std::exception
-		{
-			virtual const char* what() const throw();
-		};
-		class GradeTooLowException : public std::exception
-		{
-			virtual const char* what() const throw();
-		};
-}; 
+	// getter
+		std::string getTarget(void)const;
+};
+
+std::ostream & operator<<(std::ostream &o, PresidentialPardonForm &obj); // bunu Aform dan miras alamıyor mu da burada tekrar tanımlıyoruz?
 
 #endif
