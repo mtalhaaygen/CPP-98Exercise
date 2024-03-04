@@ -1,34 +1,34 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotmyRequestForm::RobotmyRequestForm(void) : AForm(72, 45, false, "RobotmyRequestForm"), target("default")
+RobotomyRequestForm::RobotomyRequestForm(void) : AForm(72, 45, false, "RobotomyRequestForm"), target("default")
 {
-    std::cout << "RobotmyRequestForm Default Constructor called" << std::endl;
+    std::cout << "RobotomyRequestForm Default Constructor called" << std::endl;
 }
-RobotmyRequestForm::RobotmyRequestForm(std::string const target) : AForm(72, 45, false, "RobotmyRequestForm"), target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string const target) : AForm(72, 45, false, "RobotomyRequestForm"), target(target)
 {
-    std::cout << "RobotmyRequestForm Constructor for target " << this->getTarget() << " called" << std::endl;
+    std::cout << "RobotomyRequestForm Constructor for target " << this->getTarget() << " called" << std::endl;
 }
 
-RobotmyRequestForm::RobotmyRequestForm(RobotmyRequestForm const &other) : AForm(other), target(other.target)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) : AForm(other), target(other.target)
 {
-    std::cout << "RobotmyRequestForm Copy Constructor called" << other.getName() <<
+    std::cout << "RobotomyRequestForm Copy Constructor called" << other.getName() <<
     " into " << this->getName() << std::endl;
     *this = other;
 }
 
-RobotmyRequestForm::~RobotmyRequestForm() {
-    std::cout << "RobotmyRequestForm Deconstructor called" << std::endl;
+RobotomyRequestForm::~RobotomyRequestForm() {
+    std::cout << "RobotomyRequestForm Deconstructor called" << std::endl;
 }
 
-RobotmyRequestForm& RobotmyRequestForm::operator=(const RobotmyRequestForm& other)
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
-    std::cout << "RobotmyRequestForm Assignation operator called" << std::endl;
+    std::cout << "RobotomyRequestForm Assignation operator called" << std::endl;
     if (this != &other)
         this->target = other.target;
     return *this;
 }
 
-void RobotmyRequestForm::execute(Bureaucrat const & executor) const
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
     if (executor.getGrade() > this->getGradeToExecute())
         throw AForm::GradeTooLowException();
@@ -37,12 +37,12 @@ void RobotmyRequestForm::execute(Bureaucrat const & executor) const
     std::cout << "Drilling noises, " << this->getTarget() << " has been robotomized." << std::endl;
 }
 
-std::string RobotmyRequestForm::getTarget(void)const
+std::string RobotomyRequestForm::getTarget(void)const
 {
     return this->target;
 }
 
-std::ostream & operator<<(std::ostream &o, RobotmyRequestForm &obj)
+std::ostream & operator<<(std::ostream &o, RobotomyRequestForm &obj)
 {
     o << obj.getName() << ", grade " << obj.getGradeToSign() <<  ", exec grade "<< obj.getGradeToExecute() << ", sign " << obj.getIsSigned() << ".\n";
     return (o);

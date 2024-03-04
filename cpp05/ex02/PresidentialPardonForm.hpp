@@ -7,7 +7,7 @@
 
 // classes
 class Bureaucrat;
-class From;
+class AFrom;
 
 class PresidentialPardonForm : public AForm
 {
