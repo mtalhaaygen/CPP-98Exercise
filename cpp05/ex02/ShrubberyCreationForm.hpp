@@ -8,7 +8,7 @@
 
 // classes
 class Bureaucrat;
-class From;
+class AForm;
 
 class ShrubberyCreationForm : public AForm
 {

@@ -1,5 +1,5 @@
-#ifndef ROBOTMYREQUESTFORM_HPP
-#define ROBOTMYREQUESTFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
 #include <iostream>
 #include "Bureaucrat.hpp"
@@ -7,27 +7,27 @@
 
 // classes
 class Bureaucrat;
-class From;
+class AFrom;
 
-class RobotmyRequestForm : public AForm
+class RobotomyRequestForm : public AForm
 {
 	private:
 		std::string target;
 	public:
 	// constructors
-		RobotmyRequestForm(void);
-		RobotmyRequestForm(std::string target);
-		RobotmyRequestForm(const RobotmyRequestForm& other);
+		RobotomyRequestForm(void);
+		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(const RobotomyRequestForm& other);
 	// destructor
-		~RobotmyRequestForm();
+		~RobotomyRequestForm();
 	// operator overloads
-		RobotmyRequestForm& operator=(const RobotmyRequestForm& other);
+		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 	// execute
 		void execute(Bureaucrat const & executor) const;
 	// getter
 		std::string getTarget(void)const;
 }; 
 
-std::ostream & operator<<(std::ostream &o, RobotmyRequestForm &obj);
+std::ostream & operator<<(std::ostream &o, RobotomyRequestForm &obj);
 
 #endif

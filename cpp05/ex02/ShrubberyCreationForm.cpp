@@ -38,7 +38,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     std::ofstream file;
     std::string filename = this->getTarget() + "_shrubbery";
     file.open(filename.c_str());
-    file << "      /\\      \n     /\\*\\     \n    /\\O\\*\\    \n   /*/\\/\\/\\   \n  /\\O\\/\\*\\/\\  \n /\\*\\/\\*\\/\\/\\ \n/\\O\\/\\/*/\\/O/\\\n      ||      \n      ||      \n      ||      \n";
+    file << "\n          &&& &&  & &&\n      & &\\/&\\|& ()|/ @, &&\n      &\\/(/&/&||/& /_/)_&/_&&\n   &() &\\/&|()|/&\\/ @% & ()& &\n  &_\\_&&_\\ |& |&&/&__%_/_&&\n&&   &&@& &| &| /& & % ()& /&&\n  &_---(@)&\\&\\|&&-&&--%---()~&\n      && &  \\ \\/ /  &&&&\n              ||/ /\n              ||||\n              ||||\n              ||||\n ,_-=-~.-^-_- |||| ,_ -=-~.-^- _-";
     file.close();
     std::cout << "Shrubbery has been created in " << this->getTarget() << "_shrubbery" << std::endl;
 }
