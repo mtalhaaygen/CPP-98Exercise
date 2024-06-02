@@ -20,10 +20,9 @@ class Bureaucrat
 		void incrementGrade();
 		void decrementGrade();
 		void signForm(Form &form);
-		class GradeTooLowException : public std::runtime_error
+		class GradeTooLowException : public std::exception
 		{
-			public:
-				GradeTooLowException():std::runtime_error("Grade is too low"){};
+			const char *what() const throw();
 		};
 		class GradeTooHighException : public std::exception
 		{

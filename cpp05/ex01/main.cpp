@@ -5,11 +5,15 @@ int main()
 {
 	try
 	{
-		Bureaucrat a(22, "buro");
+		Bureaucrat a(1, "buro");
 		std::cout << a << std::endl;
 
-		Form form(1, 11, true, "form");
+		Form form(1, 11, false, "form");
 		a.signForm(form);
+
+
+		Form form2(23, 11, false, "form");
+		a.signForm(form2);
 	}
 	catch (std::exception &e)
 	{

@@ -1,11 +1,11 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void) : AForm(25, 1, false, "PresidentialPardonForm"), target("default")
+PresidentialPardonForm::PresidentialPardonForm(void) : AForm(25, 5, false, "PresidentialPardonForm"), target("default")
 {
 	std::cout << "PresidentialPardonForm Default Constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(149, 149, false, "PresidentialPardonForm"), target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(25, 5, false, "PresidentialPardonForm"), target(target)
 {
 	std::cout << "PresidentialPardonForm Constructor for target " << this->getTarget() << " called" << std::endl;
 }
