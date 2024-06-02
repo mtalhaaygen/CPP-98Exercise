@@ -34,7 +34,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
         throw AForm::GradeTooLowException();
     else if (!this->getIsSigned())
         throw AForm::FormNotSigned();
-    std::cout << "Drilling noises, " << this->getTarget() << " has been robotomized." << std::endl;
+    std::cout << "Drilling noises, fgjhfjjh dfgf" << this->getTarget() << "  has been successfully robotomized 50% of the time." << std::endl;
 }
 
 std::string RobotomyRequestForm::getTarget(void)const
