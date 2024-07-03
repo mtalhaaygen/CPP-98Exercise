@@ -2,28 +2,28 @@
 
 int main()
 {
-    Array<int> array(5);
-    for (size_t i = 0; i < array.size(); i++)
-        array[i] = i;
-    for (size_t i = 0; i < array.size(); i++)
-        std::cout << array[i] << std::endl;
+	{
+		Array<int> a;
+		Array<int> b(5);
 
-    // double array
-    Array<double> darray(5);
-    for (size_t i = 0; i < darray.size(); i++)
-        darray[i] = i + 0.5;
-    for (size_t i = 0; i < darray.size(); i++)
-        std::cout << darray[i] << std::endl;
-    
-    // string array
-    Array<std::string> sarray(5);
-    sarray[0] = "one";
-    sarray[1] = "two";
-    sarray[2] = "three";
-    sarray[3] = "four";
-    sarray[4] = "five";
-    for (size_t i = 0; i < sarray.size(); i++)
-        std::cout << sarray[i] << std::endl;
+		for (unsigned int i = 0; i < b.size(); i++)
+		{
+			b[i] = i;
+		}
 
-    return 0;
+		try
+		{
+			std::cout << "size A = " << a.size() << std::endl;
+			std::cout << "size B = " << b.size() << std::endl;
+			for (unsigned int i = 0; i < b.size(); i++)
+			{
+				std::cout << "B[" << i << "] = " << b[i] << std::endl;
+			}
+			std::cout << b[5] << std::endl;
+		}
+		catch (std::exception &e)
+		{
+			std::cout << "Out of index!" << std::endl;
+		}
+	}
 }

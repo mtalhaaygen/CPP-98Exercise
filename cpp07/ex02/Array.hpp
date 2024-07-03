@@ -3,7 +3,7 @@
 
 # include <iostream>
 
-template <typename T>
+template <class T>
 class Array
 {
     private:
